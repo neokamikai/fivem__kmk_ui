@@ -16,6 +16,13 @@
     </p>
   </div>
   <div class="health-and-needs-hud ped-hud">
+    <div class="armor-hud ped-hud" ng-class="{ armor-equipped: !!$ctrl.playerInfo.armor.equipped }">
+      <div class="icon">
+        <div class="fa fa-sm fa-shield"></div>
+      </div>
+      <progress-bar-ui value="$ctrl.playerInfo.armor.percent || 50"></progress-bar-ui>
+      <div class="no-armor">Não equipado</div>
+    </div>
     <div class="health-hud ped-hud">
       <div class="icon">
         <div class="fa fa-sm fa-heart"></div>

@@ -76,6 +76,31 @@ label {
   font-size: 150%;
 }
 
+.armor-hud progress-bar-ui {
+  opacity: 0.05;
+}
+.armor-hud.armor-equipped progress-bar-ui {
+  opacity: 1;
+}
+.armor-hud .no-armor {
+  display: none;
+  position: absolute;
+  text-align: center;
+  width: 200px;
+  font-style: italic;
+  font-size: 80%;
+  top: 0;
+}
+.armor-hud.armor-equipped .no-armor {
+  display: unset;
+}
+.armor-hud .icon .fa-sm {
+  position: absolute;
+  left: -12px;
+  top: 5px;
+  font-size: 150%;
+  color: #008080;
+}
 .health-hud .icon .fa-sm {
   position: absolute;
   left: -12px;
@@ -105,6 +130,12 @@ label {
   color: #f0d000;
 }
 
+.armor-hud .icon {
+  position: absolute;
+  left: -13px;
+  top: -1px;
+  color: rgba(80,80,80, 0.85)
+}
 .health-hud .icon {
   position: absolute;
   left: -13px;
@@ -128,6 +159,9 @@ label {
   left: -13px;
   top: -1px;
   color: rgba(80,80,80, 0.85)
+}
+.armor-hud .progress-bar-filled {
+  background-color: #008080;
 }
 .hunger-hud .progress-bar-filled {
   background-color: #fa8000;
@@ -155,6 +189,12 @@ label {
   transition: all .3s linear;
 }
 
+.armor-hud {
+  position: absolute;
+  bottom: 150px;
+  right: 20px;
+  background-color: transparent;
+}
 .health-hud {
   position: absolute;
   bottom: 125px;
