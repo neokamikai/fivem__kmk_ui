@@ -2,7 +2,7 @@
 <html ng-app="kmkui">
 <head>
   <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="./script.js" type="text/javascript"></script>
 </head>
@@ -16,11 +16,36 @@
     </p>
   </div>
   <div class="health-and-needs-hud ped-hud">
-    <div class="health-bar ped-hud">
-      <div class="health-filled" id="healthBar" style="width: 40%"></div>
+    <div class="health-hud ped-hud">
+      <div class="icon">
+        <div class="fa fa-sm fa-heart"></div>
+      </div>
+      <progress-bar-ui value="$ctrl.playerInfo.healthPercent || 50"></progress-bar-ui>
     </div>
-    <div class="hunger-hud ped-hud"> <i class="fa-sharp fa-solid fa-drumstick"></i>Fome: {{ ($ctrl.playerInfo.status.hunger.percent||0) | number: 0 }}%</div>
-    <div class="thirst-hud ped-hud"> <i class="fa-light fa-bottle-water"></i> Sede: {{ ($ctrl.playerInfo.status.thirst.percent||0) | number: 0 }}%</div>
+    <div class="hunger-hud ped-hud">
+      <!-- <i class="fa-sharp fa-solid fa-drumstick"></i>Fome: {{ ($ctrl.playerInfo.status.hunger.percent||0) | number: 0 }}% -->
+      <div class="icon">
+        <!-- <i class="fa fa-lg fa-circle"></i> -->
+        <i class="fa fa-sm fa-burger"></i>
+        <!-- <i class="fa-sharp fa-solid fa-drumstick"></i> -->
+      </div>
+      <progress-bar-ui value="$ctrl.playerInfo.status.hunger.percent || 50"></progress-bar-ui>
+    </div>
+    <div class="thirst-hud ped-hud">
+      <div class="icon">
+        <!-- <i class="fa fa-lg fa-circle"></i> -->
+        <i class="fa fa-sm fa-bottle-water"></i>
+        <!-- <i class="fa-light fa-bottle-water"></i> -->
+      </div>
+      <!-- <i class="fa-light fa-bottle-water"></i> Sede: {{ ($ctrl.playerInfo.status.thirst.percent||0) | number: 0 }}% -->
+      <progress-bar-ui value="$ctrl.playerInfo.status.thirst.percent||60"></progress-bar-ui>
+    </div>
+    <div class="stamina-hud ped-hud">
+      <div class="icon">
+        <div class="fa fa-sm fa-person-running"></div>
+      </div>
+      <progress-bar-ui value="$ctrl.playerInfo.stamina.percent || 25"></progress-bar-ui>
+    </div>
   </div>
   <div class="player-info-hud">
     <div class="player-id" ng-if="false"><label>ID:</label> <span id="playerId">N/D</span></div>

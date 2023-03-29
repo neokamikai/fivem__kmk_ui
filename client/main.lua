@@ -118,12 +118,14 @@ Citizen.CreateThread(function()
         local maxPlayerHealth = GetEntityMaxHealth(playerId)
         local currentPlayerStamina = GetPlayerStamina(playerId)
         local maxPlayerStamina = GetPlayerMaxStamina(playerId)
+        local staminaPercent = 100
         local currentPlayerArmour = GetPedArmour(playerId)
         local maxPlayerArmour = GetPlayerMaxArmour(playerId)
         -- local playerPing = GetPlayerPing(playerId)
         local playerName = GetPlayerName(playerId)
         local year --[[ integer ]], month --[[ integer ]], day --[[ integer ]], hour --[[ integer ]], minute --[[ integer ]],
         second --[[ integer ]] = GetLocalTime()
+        if(maxPlayerStamina > 0) staminaPercent = currentPlayerStamina / maxPlayerStamina;
 
         SendNuiMessage(json.encode({
             type = 'update-player-info',
@@ -140,7 +142,8 @@ Citizen.CreateThread(function()
             status = currentStatus,
             stamina = {
                 current = currentPlayerStamina,
-                max = maxPlayerStamina
+                max = maxPlayerStamina,
+                percent = staminaPercent
             },
             armor = {
                 current = currentPlayerArmour,
