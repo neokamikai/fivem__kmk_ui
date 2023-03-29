@@ -25,6 +25,33 @@ app.controller('MainController', ['$scope', function MainController(scope) {
   });
 }]);
 
+app.component('progressBarUi', {
+  templateUrl: 'components/progress-bar.html',
+  bindings: {
+    barClass: '=',
+    barStyle: '=',
+    fillClass: '=',
+    fillStyle: '=',
+    value: '='
+  },
+  controller: ['$scope', function ProgressBarUIController(scope) {
+    const ctrl = this;
+    scope.$watch(function () {
+      return angular.$$stringify([
+        ctrl.fillStyle,
+        ctrl.value,
+      ]);
+    }, function () {
+      let progressValue = (typeof ctrl.value == 'number' && ctrl.value) || number;
+      if (progressValue > 100) progressValue = 100;
+      if (progressValue < 0) progressValue = 0;
+      ctrl.computedFillStyle = {
+        ...ctrl.fillStyle,
+        width: `${progressValue}%`
+      };
+    })
+  }]
+})
 app.component('speedgauge', {
   templateUrl: 'components/speed-gauge.html',
   controller: function ($scope) {

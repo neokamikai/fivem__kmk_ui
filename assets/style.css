@@ -39,48 +39,157 @@ label {
 }
 
 
+.progress-bar {
+  height: 0.5em;
+  background-color: rgba(80, 80, 80, .85);
+  /* position: absolute; */
+  /* bottom: 130px; */
+  right: 20px;
+  width: 200px;
+  border-radius: 16px;
+  border: 2px solid #303030;
+  overflow: hidden;
+}
+.progress-bar-filled {
+  height: 1em;
+  background-color: rgb(30, 30, 30);
+  transition: all .3s linear;
+}
 .health-bar {
   height: 0.5em;
   background-color: #a08080;
   position: absolute;
   bottom: 130px;
   right: 20px;
-  width: 13rem;
+  width: 200px;
   border-radius: 16px;
   border: 2px solid #303030;
   overflow: hidden;
 }
 
-.health-filled {
+.ped-hud .progress-bar {
+  height: 0.75em;
+}
+
+.icon .fa-lg {
+  position: relative;
+  font-size: 150%;
+}
+
+.health-hud .icon .fa-sm {
+  position: absolute;
+  left: -12px;
+  top: 5px;
+  font-size: 150%;
+  color: #d00000;
+}
+.hunger-hud .icon .fa-sm {
+  position: absolute;
+  left: -12px;
+  top: 5px;
+  font-size: 150%;
+  color: #fa8000;
+}
+.thirst-hud .icon .fa-sm {
+  position: absolute;
+  right: -2px;
+  top: 5px;
+  color: blue;
+  font-size: 150%;
+}
+.stamina-hud .icon .fa-sm {
+  position: absolute;
+  left: -12px;
+  top: 15px;
+  font-size: 150%;
+  color: #f0d000;
+}
+
+.health-hud .icon {
+  position: absolute;
+  left: -13px;
+  top: -1px;
+  color: rgba(80,80,80, 0.85)
+}
+.hunger-hud .icon {
+  position: absolute;
+  left: -13px;
+  top: 3px;
+  color: rgba(80,80,80, 0.85)
+}
+.thirst-hud .icon {
+  position: absolute;
+  right: -13px;
+  top: -1px;
+  color: rgba(80,80,80, 0.85)
+}
+.stamina-hud .icon {
+  position: absolute;
+  left: -13px;
+  top: -1px;
+  color: rgba(80,80,80, 0.85)
+}
+.hunger-hud .progress-bar-filled {
+  background-color: #fa8000;
+}
+.hunger-hud .progress-bar {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  transform: rotate(180deg);
+}
+.thirst-hud .progress-bar {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.hunger-hud .progress-bar,
+.thirst-hud .progress-bar {  
+  width: calc(200px / 2);
+}
+.thirst-hud .progress-bar-filled {
+  background-color: #00a0F0;
+}
+
+.health-filled, .health-hud .progress-bar-filled {
   height: 1em;
   background-color: #ff0000;
   transition: all .3s linear;
 }
 
+.health-hud {
+  position: absolute;
+  bottom: 125px;
+  right: 20px;
+  background-color: transparent;
+}
 .hunger-hud {
   position: absolute;
-  right: 20px;
+  right: 122px;
   bottom: 105px;
   font-weight: bold;
-  color: #a03000;
-  background-color: rgba(0, 0, 0, 0.25);
-  padding: 4px;
-  border-radius: 4px;
-  font-size: 85%;
+  background-color: transparent;
+  z-index: 2;
 }
 
 .thirst-hud {
   position: absolute;
   right: 20px;
+  bottom: 105px;
+  font-weight: bold;
+  z-index: 1;
+}
+.stamina-hud {
+  position: absolute;
+  right: 20px;
   bottom: 85px;
   font-weight: bold;
-  color: #00a0F0;
-  background-color: rgba(0, 0, 0, 0.25);
-  padding: 4px;
-  border-radius: 4px;
-  font-size: 85%;
+  z-index: 1;
 }
-
+.stamina-hud .progress-bar {
+  background-color: #a08080;
+}
+.stamina-hud .progress-bar-filled {
+  background-color: #f0d000;
+}
 .debug-hud {
   position: absolute;
   left: 50px;
