@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app="kmkui">
+<head>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./script.js" type="text/javascript"></script>
+</head>
+<body class="ped-hud-visible vehicle-hud-visible show-coords show-debug-info" ng-controller="MainController as $ctrl">
+  <div class="server-logo-box">
+    <h1>TropaSP</h1>
+  </div>
+  <div class="debug-hud" ng-if="false">
+    <p>
+      {{$ctrl.playerInfo.esx}}
+    </p>
+  </div>
+  <div class="health-and-needs-hud ped-hud">
+    <div class="health-bar ped-hud">
+      <div class="health-filled" id="healthBar" style="width: 40%"></div>
+    </div>
+    <div class="hunger-hud ped-hud"> <i class="fa-sharp fa-solid fa-drumstick"></i>Fome: {{ ($ctrl.playerInfo.status.hunger.percent||0) | number: 0 }}%</div>
+    <div class="thirst-hud ped-hud"> <i class="fa-light fa-bottle-water"></i> Sede: {{ ($ctrl.playerInfo.status.thirst.percent||0) | number: 0 }}%</div>
+  </div>
+  <div class="player-info-hud">
+    <div class="player-id" ng-if="false"><label>ID:</label> <span id="playerId">N/D</span></div>
+    <div class="player-name"><label>Nome:</label> <span id="playerName">N/D</span></div>
+    <div class="player-radio"><label>Radio:</label> <span id="radioFrequency">{{ $ctrl.playerInfo.radioFrequency }}</span></div>
+  </div>
+  <div class="vehicle-hud">
+    <div class="heli-hud">
+      <div class="heli-height-hud"></div>
+    </div>
+    <div class="vehicle-more-info" style="width: 200px">
+      <div class="card">
+        <div class="card-header">
+          Veículo - {{ $ctrl.vehicleInfo.name }}
+        </div>
+        <div class="card-body">
+          <div class="vehicle-belt"><label>Cinto:</label> <span id="vehicleBeltText"></span></div>
+          <div class="vehicle-lights"><label>Faróis:</label> <span id="vehicleLightsText">{{ $ctrl.onOff($ctrl.vehicleInfo.lights.lit) }}</span></div>
+          <div class="vehicle-damage"><label>Danificado:</label> <span id="vehicleName"></span><span id="vehicleDamageText"></span></div>
+          <div class="vehicle-fuel"><label>Combustivel:</label> <span id="vehicleFuelText">{{ $ctrl.vehicleInfo.fuelLevel }} {{$ctrl.vehicleInfo.dashboard.fuel}}</span></div>
+          <div class="vehicle-fuel"><label>Sujeira:</label> <span id="vehicleFuelText">{{ $ctrl.vehicleInfo.dirtLevel }}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="speedometer">
+      <div class="speedometer-speed">
+        <div>
+          <speedgauge speed="$ctrl.vehicleInfo.speed.kmPerHour" max-speed="$ctrl.vehicleInfo.speed.estimatedMaxKmPerHour||240"/>
+        </div>
+      </div>
+    </div>
+    <div class="vehicle-fuel-level">
+      <fuellevel value="$ctrl.vehicleInfo.fuelLevel" max="$ctrl.vehicleInfo.maxFuel||0" />
+    </div>
+  </div>
+  <div class="location-hud">
+    <div class="my-coords">
+      <div class="region">
+        <label class="ib">Região:</label>
+        <div class="ib">N/D</div>
+      </div>
+      <label class="ib">Coords:</label>
+      <div id="position-x-output" class="ib pos-coord ar">N/D</div>
+      <div id="position-y-output" class="ib pos-coord ar">N/D</div>
+      <div id="position-z-output" class="ib pos-coord ar">N/D</div>
+      <div class="debug-info">
+        <label class="ib">Direção:</label>
+        <div class="ib" id="heading-output">N/D</div>
+      </div>
+    </div>
+  </div>
+  <div class="card card-teleporter">
+    <div class="card-header">
+      <div class="card-title">
+        <h3>Teletransportador</h3>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <div class="input-group">
+          <label>Posição</label>
+          <div class="input-group">
+            <input type="number" name="pos_x" placeholder="x" id="teleporter_pos_x">
+            <input type="number" name="pos_y" placeholder="y" id="teleporter_pos_y">
+            <input type="number" name="pos_z" placeholder="z" id="teleporter_pos_z">
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Direção</label>
+          <select class="form-control" name="heading" id="teleporter_heading">
+            <option value="">(Atual)</option>
+            <option value="0">Norte</option>
+            <option value="180">Sul</option>
+            <option value="270">Leste</option>
+            <option value="90">Oeste</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-submit" type="button" onclick="doTeleport()" id="btnTeleport">Teletransportar</button>
+      <button class="btn btn-cancel" type="button" onclick="doCancel()" id="btnCancel">Cancelar</button>
+    </div>
+  </div>
+</body>
+</html>

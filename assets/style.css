@@ -1,0 +1,267 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+label {
+  font-weight: bold;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.server-logo-box {
+  border: 1px solid rgb(80, 80, 80);
+  background-color: rgba(180, 180, 180, .5);
+  box-shadow: inset;
+  width: 10em;
+  margin: auto;
+  padding: 0 10px;
+  border-radius: 16px;
+  text-align: center;
+  opacity: .75;
+}
+
+.server-logo-box h1 {
+  font-family: 'Comic Sans MS';
+  margin: 0.5em;
+}
+
+
+.health-bar {
+  height: 0.5em;
+  background-color: #a08080;
+  position: absolute;
+  bottom: 130px;
+  right: 20px;
+  width: 13rem;
+  border-radius: 16px;
+  border: 2px solid #303030;
+  overflow: hidden;
+}
+
+.health-filled {
+  height: 1em;
+  background-color: #ff0000;
+  transition: all .3s linear;
+}
+
+.hunger-hud {
+  position: absolute;
+  right: 20px;
+  bottom: 105px;
+  font-weight: bold;
+  color: #a03000;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 85%;
+}
+
+.thirst-hud {
+  position: absolute;
+  right: 20px;
+  bottom: 85px;
+  font-weight: bold;
+  color: #00a0F0;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 85%;
+}
+
+.debug-hud {
+  position: absolute;
+  left: 50px;
+  bottom: 250px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid black;
+  border-radius: 16px;
+  padding: 4px 13px;
+  color: white;
+  width: 250px;
+}
+
+body:not(.teleporter-open) .card-teleporter,
+body:not(.show-debug-info) .debug-info,
+body:not(.vehicle-hud-visible) .vehicle-hud,
+body:not(.on-car) .car-hud,
+body:not(.on-heli) .heli-hud,
+body:not(.ped-hud-visible) .ped-hud,
+body.main-menu-visible .vehicle-hud,
+body.main-menu-visible .ped-hud {
+  display: none;
+}
+
+.player-info-hud {
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 15px;
+  border: 1px solid rgb(40, 40, 40);
+  border-top: 0;
+  border-right: 0;
+  border-radius: 0 0 0 16px;
+  width: 200px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: lightgray;
+}
+
+.location-hud {
+  position: absolute;
+  right: 25px;
+  bottom: calc(135px + 1em);
+  font-size: 0.75em;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #303030;
+  color: lightgray;
+}
+
+.speedometer {
+  position: absolute;
+  right: 35px;
+  bottom: calc(135px + 5em)
+}
+
+.pos-coord {
+  width: 5em;
+  font-size: 85%;
+  overflow: hidden;
+}
+
+label {
+  font-weight: bold;
+}
+
+.flex {
+  display: flex;
+}
+
+.ib {
+  display: inline-block;
+}
+
+.ar {
+  text-align: right;
+}
+
+.ac {
+  text-align: center;
+}
+
+
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #303030;
+  background-color: rgba(0, 0, 0, 0.25);
+  color: lightgray;
+}
+
+.card-header,
+.card-body,
+.card-footer {
+  padding: 1em;
+}
+
+.card>.card-header {
+  border-bottom: 1px solid gray;
+}
+
+.card>.card-footer {
+  border-top: 1px solid gray;
+}
+
+.card-teleporter {
+  width: 400px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+
+.gauge {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #e7e7e7;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.09), 0 0 35px 5px rgba(255, 255, 255, 0.29);
+  width: 200px;
+  height: 100px;
+  border-radius: 100px 100px 0 0;
+  position: relative;
+  overflow: hidden;
+  /* safari fix */
+  -webkit-transform-style: flat;
+  -webkit-transform: translateZ(0px);
+  outline: double;
+  transition: all .5s linear;
+}
+
+.gauge.visible {
+  transition-delay: 1.5s;
+}
+
+.gauge.min-scaled {
+  transform: scale(0.5);
+}
+
+.gauge-center {
+  content: '';
+  color: #fff;
+  width: 60%;
+  height: 60%;
+  background: #15222E;
+  border-radius: 100px 100px 0 0;
+  position: absolute;
+  box-shadow: 0 -13px 15px -10px rgba(0, 0, 0, 0.28);
+  right: 21%;
+  bottom: 0;
+  color: #fff;
+}
+
+.gauge-center::before {
+  font-size: 1.5em;
+  width: 100%;
+  padding: 10px 0 0 0;
+  text-align: center;
+  float: left;
+  -webkit-font-smoothing: antialiased;
+}
+
+.gauge-center::after {
+  content: '';
+  width: 100%;
+  float: left;
+  opacitY: .6;
+  text-align: center;
+}
+
+.needle {
+  width: 78px;
+  height: 7px;
+  background: #15222E;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 5px;
+  position: absolute;
+  bottom: 4px;
+  left: 20px;
+  transform-origin: 100% 4px;
+  animation: speed 5s infinite;
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.38);
+}

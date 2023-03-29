@@ -1,0 +1,20 @@
+<div ng-style="{opacity: ($ctrl.speed > 0 && 0.65) || ($ctrl.speed === 0 && 0.2) || 0.15}">
+  <div class="gauge">
+    <div class="slice-colors">
+      <div ng-repeat="slice in $ctrl.slices" ng-style="slice.style">
+        <div ng-style="slice.needleStyle">
+          <div ng-style="slice.contentStyle">{{ slice.content }}</div>
+        </div>
+      </div>
+      <!-- <div class="st slice-item"></div>
+      <div class="st slice-item"></div>
+      <div class="st slice-item"></div>
+      <div class="st slice-item"></div>
+      <div class="st slice-item"></div> -->
+    </div>
+    <div class="needle" ng-style="$ctrl.needleStyle"></div>
+    <div class="gauge-center"></div>
+    <div style="z-index: 1000; color: gray;padding: 3px; text-align: right; position: relative; top: 55px; left: 60px; width: 80px; height: 30px"><span style="font-size: 32px;font-weight: bold;">{{ $ctrl.speed >= 0? $ctrl.speed : 240 | number: 0 }}</span><span style="font-size: 65%">km/h</span></div>
+  </div>
+  <div style="margin-top: 3px; padding: 0.5px; border-radius: 4px; background-color: darkgray; font-size: 75%; color: black;  text-align: center;">Max: {{ $ctrl.maxSpeed>0 && $ctrl.maxSpeed || 999 | number:0}}km/h</div>
+</div>
