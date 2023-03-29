@@ -79,11 +79,14 @@ label {
 .armor-hud progress-bar-ui {
   opacity: 0.05;
 }
-.armor-hud.armor-equipped progress-bar-ui {
+.armor-hud .icon {
+  opacity: 0.15;
+}
+.armor-hud.armor-equipped progress-bar-ui, 
+.armor-hud.armor-equipped .icon {
   opacity: 1;
 }
 .armor-hud .no-armor {
-  display: none;
   position: absolute;
   text-align: center;
   width: 200px;
@@ -92,7 +95,7 @@ label {
   top: 0;
 }
 .armor-hud.armor-equipped .no-armor {
-  display: unset;
+  display: none;
 }
 .armor-hud .icon .fa-sm {
   position: absolute;
