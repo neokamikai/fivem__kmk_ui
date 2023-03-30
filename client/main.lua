@@ -125,7 +125,9 @@ Citizen.CreateThread(function()
         local playerName = GetPlayerName(playerId)
         local year --[[ integer ]], month --[[ integer ]], day --[[ integer ]], hour --[[ integer ]], minute --[[ integer ]],
         second --[[ integer ]] = GetLocalTime()
-        if(maxPlayerStamina > 0) staminaPercent = currentPlayerStamina / maxPlayerStamina;
+        if (maxPlayerStamina > 0) then
+            staminaPercent = currentPlayerStamina / maxPlayerStamina;
+        end
 
         SendNuiMessage(json.encode({
             type = 'update-player-info',
