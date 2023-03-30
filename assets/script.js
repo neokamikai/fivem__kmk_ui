@@ -42,7 +42,7 @@ app.component('progressBarUi', {
         ctrl.value,
       ]);
     }, function () {
-      let progressValue = (typeof ctrl.value == 'number' && ctrl.value) || number;
+      let progressValue = (typeof ctrl.value == 'number' && ctrl.value) || 0;
       if (progressValue > 100) progressValue = 100;
       if (progressValue < 0) progressValue = 0;
       ctrl.computedFillStyle = {
